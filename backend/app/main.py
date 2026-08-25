@@ -13,7 +13,7 @@ logging.basicConfig(level=settings.log_level)
 app = FastAPI(
     title=settings.project_name,
     version="0.1.0",
-    description="Phase 1: local setup only. No ingestion, no AI, no automation yet.",
+    description="Phase 2: profile and source authorization. No ingestion, no AI, no automation yet.",
 )
 
 app.add_middleware(
@@ -29,4 +29,4 @@ app.include_router(api_router)
 
 @app.get("/")
 def root() -> dict:
-    return {"service": settings.project_name, "phase": 1, "docs": "/docs"}
+    return {"service": settings.project_name, "phase": 2, "docs": "/docs"}
