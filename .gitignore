@@ -1,0 +1,31 @@
+# ---- secrets ----
+.env
+.env.local
+*.pem
+*.session
+*.session-journal
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# ---- node / next ----
+node_modules/
+.next/
+out/
+npm-debug.log*
+
+# ---- data / storage ----
+storage/
+uploads/
+*.db
+*.sqlite3
+
+# ---- editors / os ----
+.vscode/
+.idea/
+.DS_Store
