@@ -13,6 +13,7 @@ ALLOWED_SOURCE_OPERATIONS = {
     "register_source",
     "authorize_source",
     "revoke_source",
+    "ingest_from_source",
 }
 
 FORBIDDEN_WORDS = ("send", "reply", "react", "forward", "broadcast", "publish")
