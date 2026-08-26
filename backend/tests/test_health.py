@@ -8,7 +8,7 @@ client = TestClient(app)
 def test_root_returns_service_info():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json()["phase"] == 7
+    assert response.json()["phase"] == 11
 
 
 def test_liveness_is_ok_without_database():
