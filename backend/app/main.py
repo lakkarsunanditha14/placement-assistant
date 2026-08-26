@@ -13,7 +13,7 @@ logging.basicConfig(level=settings.log_level)
 app = FastAPI(
     title=settings.project_name,
     version="0.1.0",
-    description="Phase 3: mock source adapter. No Telegram, no AI, no automation yet.",
+    description="Phase 5: message storage. Telegram deferred; ingestion runs on the mock adapter.",
 )
 
 app.add_middleware(
@@ -29,4 +29,4 @@ app.include_router(api_router)
 
 @app.get("/")
 def root() -> dict:
-    return {"service": settings.project_name, "phase": 3, "docs": "/docs"}
+    return {"service": settings.project_name, "phase": 5, "docs": "/docs"}

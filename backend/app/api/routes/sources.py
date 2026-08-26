@@ -7,6 +7,8 @@ replies, posts, reacts, edits, deletes or forwards through a source.
 Read-only is not a setting on this system; it is the absence of any code
 that could do otherwise.
 """
+from app.services.ingestion.reader import SourceNotAuthorizedError
+from app.services.ingestion.store import ingest_source
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -80,3 +82,13 @@ def revoke_source(source_id: int, db: Session = Depends(get_db)) -> Source:
     db.commit()
     db.refresh(source)
     return source
+
+
+@router.post("/{source_id}/ingest")
+def ingest_from_source(source_id: int, db: Session = Depends(get_db)) -> dict:
+    """Read the source now and store any new messages."""
+    source = _get_or_404(source_id, db)
+    try:
+        return ingest_source(db, source, fetched_at=datetime.now(timezone.utc))
+    except SourceNotAuthorizedError as exc:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, str(exc)) from exc
