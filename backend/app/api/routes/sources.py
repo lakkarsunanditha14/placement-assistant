@@ -49,12 +49,12 @@ def register_source(
     db.add(source)
     try:
         db.commit()
-    except IntegrityError:
+    except IntegrityError as exc:
         db.rollback()
         raise HTTPException(
             status.HTTP_409_CONFLICT,
             "This source is already registered.",
-        )
+        ) from exc
     db.refresh(source)
     return source
 
