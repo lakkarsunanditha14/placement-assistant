@@ -29,4 +29,4 @@ app.include_router(api_router)
 
 @app.get("/")
 def root() -> dict:
-    return {"service": settings.project_name, "phase": 7, "docs": "/docs"}
+    return {"service": settings.project_name, "phase": 11, "docs": "/docs"}
